@@ -16,7 +16,6 @@ table = NetworkTable.getTable("GearTable")
 
 
 # X values of the left boundary of zones, assuming the robot is at the correct distance
-impossibleLeft = 0
 impossibleRight = 0
 zone1 = 0
 zone2 = 0
@@ -44,10 +43,9 @@ def Pipeline(frame):
     elif len(mask.contours) == 2:
         liftX = mask.contours[0].center_x + mask.contours[1].center_x
 
-
-        if liftX < impossibleLeft * 1.05:
+        if liftX < zone1: #left impossible
             table.putValue('zone', -1)
-        elif liftX * 1.05 > impossibleRight:
+        elif liftX > impossibleRight:
             table.putValue('zone', -1)
         elif zone1 <= liftX < zone2:
             table.putValue('zone', 1)
