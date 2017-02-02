@@ -16,8 +16,8 @@ table = NetworkTable.getTable("GearTable")
 
 
 # X values of the left boundary of zones, assuming the robot is at the correct distance
-impossibleRight = 0
-zone1 = 0
+impossibleRight = 233
+zone1 = 73
 zone2 = 0
 zone3 = 0
 zone4 = 0
