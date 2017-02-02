@@ -40,21 +40,34 @@ def Pipeline(frame):
     #if only 1 contour has been found, the robot must be very off
     if len(mask.contours) == 1:
         table.putValue('zone', -1)
+        logging.info(-1)
     elif len(mask.contours) == 2:
         liftX = mask.contours[0].center_x + mask.contours[1].center_x
 
         if liftX < zone1: #left impossible
             table.putValue('zone', -1)
+            logging.info(liftX)
+            logging.info(-1)
         elif liftX > impossibleRight:
             table.putValue('zone', -1)
+            logging.info(liftX)
+            logging.info(-1)
         elif zone1 <= liftX < zone2:
             table.putValue('zone', 1)
+            logging.info(liftX)
+            logging.info(1)
         elif zone2 <= liftX < zone3:
             table.putValue('zone', 2)
+            logging.info(liftX)
+            logging.info(2)
         elif zone3 <= liftX < zone4:
             table.putValue('zone', 3)
+            logging.info(liftX)
+            logging.info(3)
         else:
             table.putValue('zone', 4)
+            logging.info(liftX)
+            logging.info(4)
 
     mask.contours_draw(orig)
 
