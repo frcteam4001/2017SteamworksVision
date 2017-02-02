@@ -3,7 +3,7 @@ import logging
 from networktables import NetworkTable
 
 
-NetworkTable.setIPAddress("10.40.1.14")
+NetworkTable.setIPAddress("10.40.1.2")
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 logging.basicConfig(level=logging.DEBUG)
@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG)
 while not NetworkTable.isConnected:
     pass
 
-table = NetworkTable.getTable("GearTable")
+table = NetworkTable.getTable("GearZone")
 
 
 # X values of the left boundary of zones, assuming the robot is at the correct distance
@@ -35,7 +35,7 @@ def Pipeline(frame):
 
     #applies filters
     frame.color_hls()
-    mask = frame.threshold([70, 100, 50], [100, 190, 155])
+    mask = frame.threshold([74, 131, 122], [119, 255, 255])
     mask.blur(3)
 
     #if only 1 contour has been found, the robot must be very off
@@ -43,7 +43,7 @@ def Pipeline(frame):
         table.putValue('zone', -1)
         logging.info(-1)
     elif len(mask.contours) == 2:
-        liftX = mask.contours[0].center_x + mask.contours[1].center_x
+        liftX = (mask.contours[0].center_x + mask.contours[1].center_x)/2
 
         if liftX < zone1: #left impossible
             table.putValue('zone', -1)
@@ -52,7 +52,7 @@ def Pipeline(frame):
         elif liftX > impossibleRight:
             table.putValue('zone', -1)
             logging.info(liftX)
-            logging.info(-1)
+            logging.info("hi")
         elif zone1 <= liftX < zone2:
             table.putValue('zone', 1)
             logging.info(liftX)
