@@ -3,7 +3,7 @@ import logging
 from networktables import NetworkTable
 
 
-NetworkTable.setIPAddress("127.0.0.1")
+NetworkTable.setIPAddress("10.40.1.14")
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 logging.basicConfig(level=logging.DEBUG)
