@@ -3,9 +3,11 @@ import logging
 from networktables import NetworkTable
 
 
+
 NetworkTable.setIPAddress("roborio-4001-frc.local")
 NetworkTable.setClientMode()
 NetworkTable.initialize()
+
 logging.basicConfig(level=logging.DEBUG)
 
 #wait for connection
