@@ -3,9 +3,7 @@ import logging
 from networktables import NetworkTable
 
 
-NetworkTable.setIPAddress("10.40.1.2")
-NetworkTable.setClientMode()
-NetworkTable.initialize()
+NetworkTable.initialize(server="10.40.1.2")
 logging.basicConfig(level=logging.DEBUG)
 
 #wait for connection
