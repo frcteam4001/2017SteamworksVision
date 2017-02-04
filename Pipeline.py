@@ -55,7 +55,7 @@ def Pipeline(frame):
     else:
         #mask.contours_sort("area")
         top_contours = mask.contours[0:2]
-        #for i in range(len(top_contours)):
+        #for i in range(len(top_contours)):#
         #    logging.info(str(top_contours[i].area))
 
 
