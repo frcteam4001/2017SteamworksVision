@@ -27,6 +27,7 @@ zoneWidth = (impossibleRight - zone1) / 5
 zone2 = zone1 + zoneWidth
 zone3 = zone2 + zoneWidth
 zone4 = zone3 + zoneWidth
+zone4 = zone4 + zoneWidth
 
 
 
@@ -88,10 +89,16 @@ def Pipeline(frame):
             logging.info(liftX)
             logging.info(3)
 
-        else:
+        elif zone4 <= liftX < zone5:
             table.putValue('zone', 4)
             logging.info(liftX)
             logging.info(4)
+
+        else:
+            table.putValue('zone', 5)
+            logging.info(liftX)
+            logging.info(5)
+            
 
     mask.contours_draw(orig)
 
