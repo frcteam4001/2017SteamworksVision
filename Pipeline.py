@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 while not NetworkTable.isConnected():
     pass
 
-logging.info(str(NetworkTable.isConnected()))
+logging.info("Network Table Connection: "+str(NetworkTable.isConnected()))
 
 table = NetworkTable.getTable("GearZone")
 
@@ -27,7 +27,8 @@ zoneWidth = (impossibleRight - zone1) / 5
 zone2 = zone1 + zoneWidth
 zone3 = zone2 + zoneWidth
 zone4 = zone3 + zoneWidth
-zone4 = zone4 + zoneWidth
+zone5 = zone4 + zoneWidth
+
 
 
 
@@ -39,7 +40,7 @@ def Pipeline(frame):
     #makes a copy of the original image
     orig = copy.deepcopy(frame)
 
-    #applies filters\
+    #applies filters
 
     frame.color_hls()
 
