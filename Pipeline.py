@@ -17,6 +17,8 @@ while not NetworkTable.isConnected():
 logging.info("Network Table Connection: "+str(NetworkTable.isConnected()))
 
 table = NetworkTable.getTable("GearZone")
+table.putValue('Connection', True)
+
 
 
 
