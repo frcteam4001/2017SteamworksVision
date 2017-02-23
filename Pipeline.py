@@ -1,23 +1,32 @@
 import copy
 import logging
+import time
 from networktables import NetworkTable
 
+#time.sleep(15)
 
+logging.basicConfig(level=logging.DEBUG)
 
 NetworkTable.setIPAddress("roborio-4001-frc.local")
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 
-logging.basicConfig(level=logging.DEBUG)
+
+
+#logging.info("Network Table: attempting connection")
 
 #wait for connection
-while not NetworkTable.isConnected():
-    pass
+'''
+while NetworkTable.isConnected() == False:
+    logging.info("Network Table: connecting ...")
+    logging.info(NetworkTable.isConnected())
+'''
 
-logging.info("Network Table Connection: "+str(NetworkTable.isConnected()))
+
+#logging.info("Network Table Connection: "+str(NetworkTable.isConnected()))
 
 table = NetworkTable.getTable("GearZone")
-table.putValue('Connection', True)
+#table.putValue('Connection', True)
 
 
 
@@ -47,6 +56,7 @@ def Pipeline(frame):
     frame.color_hls()
 
     #mask = frame.threshold([74, 131, 113], [180, 255, 255])
+    #mask = frame.threshold([76, 60, 60], [180, 255, 255])
     mask = frame.threshold([76, 60, 60], [180, 255, 255])
     mask.blur(3)
     mask.contours_sort('_area', True)
